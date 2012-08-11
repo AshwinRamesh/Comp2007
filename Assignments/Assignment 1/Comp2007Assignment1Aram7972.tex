@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[hmargin=2.5cm,vmargin=0.5cm]{geometry}
+\author{Ashwin Ramesh}
+\title{Comp2007 - Assignment 1}
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+
+\subsection{Overview of Problem 1}
+
+Polynomial calculation can be a very expensive computation to run and therefore efficiency is integral when creating algorithms to solve this problem. This problem introduces two algorithms. Algorithm 1 uses a naive approach, recalculating the new power of x on every iteration. On the other hand, Algorithm 2 uses Horner's rule by calculating the new power by using the previous power of x. Below is the asymptotically tight analysis of both algorithms. 
+
+\subsection{Algorithm Analysis}
+
+
+\begin{flushleft}
+
+\textbf{Upper Bounds:} $T(n)$ is $O(f(n))$ if there exists constants $c > 0$ and $n_{0} \geqq 0$ such that for all $n \geqq n_{0}$, we have $T(n) \leqq c*f(n)$.
+\end{flushleft}
+
+\begin{flushleft}
+\textbf{Lower Bounds:} $T(n)$ is $\Omega (f(n))$ if there exists constants $c > 0$ and $n_{0} \geqq 0$ such that for all $n \geqq n_{0}$, we have $T(n) \geqq c*f(n)$.
+\end{flushleft}
+
+\begin{flushleft}
+\textbf{Tight Bounds:} $T(n)$ is $\Theta (f(n))$ if $ T(n) $ is both $O(f(n))$ and $\Omega (f(n))$.
+\end{flushleft}
+
+\subsection{Algorithm 1 - NAIVE(x,A) Analysis}
+\begin{itemize}
+\item Line 3: $O(n)$ time as it is an iteration from 0 to n
+
+\item Line 4: $O(1)$ time
+
+\item Line 5: $O(n)$ time as i varies from 1 to n
+
+\item Line 6/7: $O(1)$ time
+\end{itemize}
+
+
+\textbf{Upper Bound Time Complexity of Naive Approach: $O(n) * O(n) = O(n^2)$}
+
+\mbox{}
+
+\textbf{Lower Bound Time Complexity of Naive Approach:} similarly the lower bound will be $ \Omega(n^2)$
+
+\mbox{}
+
+This means that the \textbf{Tight Bound Complexity} will be $ \Theta(n^2)$
+
+\subsection{Algorithm 2 - HORNER(x,A) Analysis}
+\begin{itemize}
+\item Line 3: $O(n)$ time as it is an iteration from 0 to n
+
+\item Line 4: $O(1)$ as it uses the result from above to calculate addition
+
+\end{itemize}
+
+
+\textbf{Upper Bound Time Complexity of Naive Approach: $O(n) * O(1) = O(n)$}
+
+\mbox{}
+
+\textbf{Lower Bound Time Complexity of Naive Approach:} similarly the lower bound will be $ \Omega(n)$
+
+\mbox{}
+
+This means that the \textbf{Tight Bound Complexity} will be $ \Theta(n)$
+
+\end{document}
