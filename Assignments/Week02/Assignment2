@@ -1,0 +1,44 @@
+# DFS implemented for cut verticies runs in O(m+n) time ?
+
+def DFS(G):
+	for vertex u in G:
+		u.visted = False
+		u.parent = None
+	time = 0
+	for vertex u in G:
+		if u.visted == False:
+			DFS_VISIT(u)
+
+def DFS_VISIT(u):
+	time = time + 1
+	u.discovery() = time
+	u.visited() = True
+	for children v in u:
+		if v.visted() == False:
+			v.parent() = u
+			DFS_VISIT(v)
+	time = time + 1
+	f[u] = time # what is this line????
+
+
+
+#Cut Verticies Algorithm: runs O(n^2)
+
+run DFS on G to compute T and d[u for eac u in V
+answer = 0
+if root r of T has two or more childre then
+	add r to answer
+for v internal node of T:
+	for each child v of u in T:
+		if down&up[v] = d[u]:
+			answer.append(u)
+
+return answer
+
+
+# total time should be O(m+n) = O(n^2) = O(n^2)
+
+Find_Cut_Vertex(G):
+	root = DFS(G)
+	if root has > 1 child:
+		root.disconnectingPower() = 
