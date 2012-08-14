@@ -25,7 +25,7 @@ def DFS(G):
 	time = 0
 	for vertex u in G:
 		if u.visted == False:
-			u.size = DFS_VISIT(u)
+			u.size = u.size + DFS_VISIT(u)
     return root
 
 def DFS_VISIT(u):
@@ -35,42 +35,47 @@ def DFS_VISIT(u):
 	for children v in u:
 		if v.visted() == False:
 			v.parent() = u
-			DFS_VISIT(v)
+			u.size = u.size + DFS_VISIT(v)
+    u.size = u.size + 1 #include current node
 	time = time + 1
 	u.finish = time
-    u.size = the number of nodes below the current node
+    return u.size
 
 
 
 #Cut Verticies Algorithm: runs O(n^2)
 
 def getCutVertex(G):
-    root = DFS(G) # run DFS on G to compute T and d[u for eac u in V
+    root = DFS(G) # get the root of the graph
     if root.children.count > 1:
-        root.cutVertex = True
+        root.cutVertex = True # root is a C.V if it has more than 1 child
         for child in root.children:
-            child.breakableNode = True
-    for v internal node of T:
+            child.breakableNode = True # each child in the root is a seperate forest
+    for v internal node of T: 
     	for each child v of u in T:
-    		if v.downUp = u.discovery:
+    		if v.downUp <= u.discovery: # if there are no back edges
     			v.cutVertex = True
                 v.breakableNode = True
+            else:
+                v.breakableNode = False
     return G
 
 # this function will calculate the disconnecting power
-def DisconnectingPower():
-    G = getCutVertex()
+
+def DisconnectingPower(G):
+    G = getCutVertex(G)
     for vertex in G:
         if vertex.cutVertex == False:
             vertex.disconnectingPower = 0
         else:
-            tempCount = G.size - 1 # take into account the removed node
+            tempCount = G.size - 1 # total number of nodes remaining in the graph
             tempArray = []
             for child in vertex.children:
-                if child.breakableNode:
-                    tempArray.append(child.size) # append smaller forest size into array
-                    G.size = G.size - child.size # remove all nodes below the child (inclusive) to get the larger forest
-                vertex.disconnectingPower = sum of the multiplication of each array element in tempArray x tempCount
+                if child.breakableNode = True:
+                    tempArray.append(child.size) # append size to array
+                    tempCount = tempCount - child.size # reduce the size of main forest
+                vertex.disconnectingPower = sum(tempCount * tempArray elements) 
+                # multiply main forest by all sub forests
     return G
 
 
