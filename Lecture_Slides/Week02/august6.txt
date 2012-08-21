@@ -1,0 +1,20 @@
+Python 2.7.2 |EPD 7.1-2 (64-bit)| (default, Jul 27 2011, 14:50:45) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.12 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+
+In [58]: G
+Out[58]: {'a': ['b', 'c'], 'b': ['a', 'd', 'c'], 'c': ['a', 'b'], 'd': ['b']}
+
+In [59]: G['a']
+Out[59]: ['b', 'c']
+
+In [60]: BFS(G,'a')
+Out[60]: [['a'], ['b', 'c'], ['d']]
+
+In [61]: 
